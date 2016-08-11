@@ -1,0 +1,36 @@
+[
+{
+      "menu":"applyLeave",
+      "href":"#/applyleave",
+      "icon":"fa fa-bomb"
+      
+},
+{
+      "menu":"approveLeave",
+      "href":"#/listalluserLeaves",
+      "icon":"fa  fa-bell"
+      
+},
+{
+      "menu":"leaveReport",
+      "href":"#/leaveReport",
+      "icon":"fa fa-table"
+       
+},
+{
+      "menu":"Employee Management",      
+      "href":"",
+      "icon":"fa  fa-user",
+      "submenus":[ 
+       
+         {  
+            "submenu":"Create Empolyee",
+            "href":"#/createUser"
+         },
+        {  
+            "submenu":"List All Empolyee",
+            "href":"#/listOfUser"
+         }         
+      ]
+}
+]

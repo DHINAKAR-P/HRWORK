@@ -1,0 +1,125 @@
+<header class="navbar" id="header-navbar"
+	data-ng-controller="NavbarController as navbar">
+	<div class="container">
+		<a href="#/listuserleave" id="logo" class="navbar-brand"> <img
+			src="lib/theme/img/hrimage.PNG" alt="" class="normal-logo logo-white">
+		</a>
+
+		<div class="clearfix">
+			<button class="navbar-toggle" data-target=".navbar-ex1-collapse"
+				data-toggle="collapse" type="button">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="fa fa-bars"></span>
+			</button>
+
+			<div
+				class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
+				<ul class="nav navbar-nav pull-left">
+					<li><a class="btn" id="make-small-nav"> <i
+							class="fa fa-bars"></i>
+					</a></li>
+				</ul>
+			</div>
+
+			<div class="nav-no-collapse pull-right" id="header-nav">
+				<ul class="nav navbar-nav pull-right">
+					<li class="dropdown profile-dropdown"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown"><!-- <span>{{role[0]}}</span> -->
+							<img src="lib/app/img/user.jpg" alt=""> <span
+							class="hidden-xs"><span>{{userName}}</span></span> <b
+							class="caret"></b> </a>
+						<ul class="dropdown-menu dropdown-menu-right">
+							<!-- <li><a href="#/editProfile"><i class="fa fa-user"></i>Profile</a></li> -->
+							<li><a data-toggle="modal" href="#resetpassword"><i
+									class="fa fa-key"></i>Reset password</a></li>
+							<li><a href="" data-ng-click="logout()"><i
+									class="fa fa-power-off"></i>Logout</a></li>
+						</ul></li>
+
+					<!-- 	<li class="hidden-xxs"><a class="btn" ng-click="logout()">
+							<i class="fa fa-power-off"></i>
+					</a></li> -->
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+<!-- ######################## -->
+<!-- RESET PASSWORD MODEL  -->
+<!-- START -->
+<div style="display: none;" class="modal fade" id="resetpassword"
+	tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">x</button>
+				<h4 class="modal-title">
+					<B>Reset Password</B>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div ng-controller="ResetPasswordController as resetPassword">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<div id="login-box" style="margin: 0px auto 20px;">
+									<div id="login-box-holder">
+										<div class="row">
+											<div class="col-xs-12">
+												<div style="border: medium none;" class="with-heading"
+													id="login-box-inner">
+													<form role="form" ng-submit="checkPassword(pass)">
+														<div class="form-group">
+															<div class="alert alert-success fade in"
+																ng-show="message!=''">
+																<i class="fa fa-check-circle fa-fw fa-lg"></i>
+																{{message}}
+															</div>
+															<div class="alert alert-danger fade in"
+																ng-show="error!=''">
+																<i class="fa fa-times-circle fa-fw fa-lg"></i> {{error}}
+															</div>
+														</div>
+														<div class="input-group">
+															<span class="input-group-addon"><i
+																class="fa fa-lock"></i></span> <input class="form-control"
+																type="password" required placeholder="Old password"
+																ng-model="pass.oldpassword">
+														</div>
+														<div class="input-group">
+															<span class="input-group-addon"><i
+																class="fa fa-lock"></i></span> <input class="form-control"
+																type="password" required placeholder="New password"
+																ng-model="pass.password">
+														</div>
+														<div class="input-group">
+															<span class="input-group-addon"><i
+																class="fa fa-lock"></i></span> <input class="form-control"
+																type="password" required placeholder="Confirm password"
+																ng-model="pass.retypePassword">
+														</div>
+														<div class="row">
+															<div class="col-xs-12">
+																<button data-ng-hide="isAjax"
+																	class="btn btn-success col-xs-12" type="submit">Reset
+																	password</button>
+															</div>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- MODEL END -->
+<!-- ######################## -->

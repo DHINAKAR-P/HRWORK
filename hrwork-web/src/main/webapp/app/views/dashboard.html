@@ -1,0 +1,63 @@
+
+<div data-ng-controller="DashBoardController as userList">
+	<!-- <h1>List Of Leaves</h1>
+	<form name="dashBoardForm">
+		<div class="col-lg-12">
+			<div class="main-box no-header clearfix">
+				<div class="main-box-body clearfix">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<td><strong>Search By Name:</strong></td>
+									<td><input type="text" data-ng-model="query"></td>
+									
+								</tr>
+								<tr>
+									<th style="text-align: center;"><span>User</span></th>
+									<th style="text-align: center;"><span>Email</span></th>
+									<th style="text-align: center;"><span>Role</span></th>
+									<th style="text-align: center;"><span>Edit</span></th>
+									<th style="text-align: center;"><span>Activate</span></th>
+									<th style="text-align: center;"><span>Apply Leave</span></th>
+									<th style="text-align: center;"><span>List Leave Of
+											User</span></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-ng-repeat="user in userList | filter:{firstName:query}">
+									<td style="text-align: center">{{user.firstName}}</td>
+									<td style="text-align: center">{{user.contact.emailAddress[0]}}</td>
+									<td style="text-align: center"><p
+											class="label label-success">{{user.role}}</p></td>
+									<td style="text-align: center"><a href=""
+										data-ng-click="edit(user);" class="table-link"> <span
+											class="fa-stack"> <i class="fa fa-square fa-stack-2x"></i>
+												<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+										</span>
+									</a></td>
+											<td><input type="checkbox" ng-true-value="'ACTIVATED'"
+										ng-false-value="'DEACTIVATED'" ng-change="changestatus(user)"
+										ng-model="user.status" ng-checked={{user.status}}><br /></td>
+
+									<td style="text-align: center"><input type="button"
+										id="submitBtn" data-ng-click="changestatus(user)"
+										class="btn btn-success col-xs-10" value="{{user.status}}"></td>
+
+									<td style="text-align: center"><div class="row">
+											<input type="submit" data-ng-click="applyleave(user)"
+												class="btn btn-success col-xs-10" value="APPLY LEAVE">
+										</div></td>
+									<td style="text-align: center"><a href=""
+										data-ng-click="listLeaveOfUser(user.id);" class="table-link">
+											<span class="fa fa-list"></span>
+									</a> 
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form> -->
+</div>

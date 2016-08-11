@@ -1,0 +1,56 @@
+<div id="nav-col" data-ng-controller="MenuBarController as menuCtrl">
+	<section id="col-left" class="col-left-nano">
+		<div id="col-left-inner" class="col-left-nano-content">
+			<div id="user-left-box"
+				class="clearfix hidden-sm hidden-xs dropdown profile2-dropdown">
+				<img alt="" src="lib/app/img/user.jpg">
+				<div class="user-box">
+					<span class="name"> <a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"> <span>{{userName}}</span> <i
+							class="fa fa-angle-down"></i>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="#/updateuser"><i class="fa fa-user"></i>Profile</a></li>
+							<!-- <li><a href="" ng-click="logout()"><i
+									class="fa fa-power-off"></i>Logout</a></li> -->
+						</ul>
+
+					</span> <span class="status"> <i class="fa fa-circle"></i> Online
+					</span>
+				</div>
+			</div>
+
+			<div class="collapse navbar-collapse navbar-ex1-collapse"
+				id="sidebar-nav">
+				<ul class="nav nav-pills nav-stacked">
+					<li class="nav-header nav-header-first hidden-sm hidden-xs">
+						Navigation</li>
+
+					<li><a href="#/applyleave"><i class="fa fa-bomb"></i><span>Apply
+								Leave</span></a></li>
+					<li><a href="#/listalluserLeaves"><i class="fa  fa-bell"></i><span>Approve
+								Leave</span></a></li>
+
+					<li><a href="#/leaveReport"> <i class="fa fa-table"></i> <span>Leave
+								Report</span> <!-- <i
+							class="fa fa-angle-right drop-icon"></i> -->
+					</a></li>
+					<li><a href="#/dashBoard" class="dropdown-toggle"> <i
+							class="fa fa-user"></i><span>Employee Management</span><i
+							class="fa fa-angle-right drop-icon"></i>
+					</a>
+						<ul class="submenu">
+							<li><a href="#/createUser">Create Employee</a></li>
+							<li><a href="#/listOfUser">List All Employee</a></li>
+
+						</ul></li>
+					<li><a href="#/teamDesign"><i class="fa fa-users"></i><span>Team
+								Design </span></a></li>
+
+				</ul>
+			</div>
+		</div>
+	</section>
+	<div id="nav-col-submenu"></div>
+</div>
+

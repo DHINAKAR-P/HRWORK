@@ -1,0 +1,171 @@
+<div data-ng-controller="userUpdateController">
+	<div class="col-xs-12">
+		<div id="login-box">
+			<div id="login-box-holder">
+				<div class="row">
+					<div class="col-xs-12">
+						<header id="login-header">
+							<div id="login-logo">
+								<h1>Update User</h1>
+							</div>
+						</header>
+						<div id="login-box-inner">
+							<form role="form" name="projform"
+							data-ng-submit="projform.$valid && saveUser(user)"
+								novalidate="novalidate">
+
+
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user"
+										style="color: #03a9f4;"></i></span> <input class="form-control"
+										type="text" name="firstName" data-ng-model="user.firstName"
+										placeholder="First Name" required="required" data-ng-required="true">
+								</div>
+								<span class="error-msg"
+									data-ng-show="projform.$submitted && projform.firstName.$error.required">firstName
+									is required!</span>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user"
+										style="color: #03a9f4;"></i></span> <input class="form-control"
+										type="text" name="lastName" data-ng-model="user.lastName"
+										placeholder="Last Name" required="required" ng-required="true">
+								</div>
+								<span class="error-msg"
+									data-ng-show="projform.$submitted &&projform.lastName.$error.required">lastName
+									is required!</span>
+
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user"
+										style="color: #03a9f4;"></i></span> <input class="form-control"
+										type="text" name="userName" data-ng-model="user.userName"
+										placeholder="User Name" required="required" data-ng-required="true">
+								</div>
+								<span class="error-msg"
+									data-ng-show="projform.$submitted && projform.userName.$error.required">Username
+									is required!</span>
+
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-key"
+										style="color: #03a9f4;"></i></span> <input type="password"
+										class="form-control" data-ng-required="true" ng-minlength="4"
+										data-ng-model="user.password" name="pass" required="true"
+										placeholder="Password">
+								</div>
+								<span class="error-msg" type="password"
+									data-ng-show="projform.$submitted && projform.pass.$error.required">Password
+									is required!</span> <span class="error-msg"
+									data-ng-show="projform.pass.$error.minlength">Password should
+									be minimum of 4 characters long!</span>
+
+
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="fa  fa-mortar-board " style="color: #03a9f4;"></i></span> <input
+										class="form-control" type="text" name="resume"
+										data-ng-model="user.resume" placeholder="Resume(or)Qualification"
+										required="required" data-ng-required="true">
+								</div>
+								<span class="error-msg"
+									data-ng-show="projform.$submitted &&projform.resume.$error.required">Qualification
+									is required!</span>
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="fa fa-calendar" style="color: #03a9f4;"></i></span> <input
+										class="form-control" type="text" name="Date_Of_Birth"
+										data-ng-model="user.dateOfBirth" id="datepickerDate"
+										placeholder="Date Of Birth (dd-mm-yyyy)" required="required"
+										data-ng-required="true">
+								</div>
+								<span class="error-msg"
+									data-ng-show="projform.$submitted && projform.Date_Of_Birth.$error.required">DOB
+									is required!</span>
+									<script>
+									$(function($) {
+										$('#datepickerDate').datepicker({
+											format : 'dd-mm-yyyy'
+										});
+									})
+								</script>
+
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="fa fa-building" style="color: #03a9f4;"></i></span> <input
+										class="form-control" type="text" name="address"
+										data-ng-model="user.contact.address" placeholder="Address" required="true"
+										data-ng-required="true">
+								</div>
+								<span class="error-msg"
+									data-ng-show="projform.$submitted && projform.address.$error.required">address
+									is required!</span>
+
+								<div class="input-group">
+
+									<span class="input-group-addon"><i class="fa fa-tasks"
+										style="color: #03a9f4;"></i></span> <span
+										data-ng-repeat="field in table.fields track by $index">
+										<input class="form-control" type='text'
+										data-ng-model='table.fields[$index]' style="width: 90%;"
+										placeholder='skills' required="required"
+										data-ng-required="true">
+										<button data-ng-click="removeFormField($index)"
+											style="float: right; margin-top: 0px;" class="btn-danger">-</button>
+									</span>
+									<button data-ng-click="addFormField()"
+										style="float: right; margin-top: 0px;" class="btn-success">+</button>
+
+								</div>
+								<span class="error-msg"
+									data-ng-show="projform.$submitted && projform.skills.$error.required">Skills
+									is required!</span>
+
+
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="fa fa-envelope-square" style="color: #03a9f4;"></i></span> <input
+										class="form-control" type="text" name="emailaddress"
+										data-ng-model="user.contact.emailAddress[0]"
+										placeholder="EmailAddress" required="required" data-ng-required="true">
+								</div>
+								<span class="error-msg"
+									ng-show="projform.$submitted && projform.emailaddress.$error.required">Email
+									Address is required!</span>
+
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="fa fa-envelope-square" style="color: #03a9f4;"></i></span> <input
+										class="form-control" type="text" name="emailaddress1"
+										data-ng-model="user.contact.emailAddress[1]"
+										placeholder="Alternate EmailAddress(optional)">
+								</div>
+
+								<div class=" input-group">
+									<span class="input-group-addon"><i class=" fa fa-mobile"
+										style="color: #03a9f4; "></i></span> <input class="form-control"
+										type="text" name="phoneNumber" data-ng-model="user.contact.phone[0]"
+										placeholder="Phone Number" required="required" data-ng-required="true" >
+								</div>
+								<span class="error-msg"
+									data-ng-show="projform.$submitted && projform.phoneNumber.$error.required">PhoneNumber
+									is required!</span>
+									
+									<div class=" input-group">
+									<span class="input-group-addon"><i class=" fa fa-mobile"
+										style="color: #03a9f4; "></i></span> <input class="form-control"
+										type="text" name="phoneNumber" data-ng-model="user.contact.phone[1]"
+										placeholder="Alternate Phone Number(Optional)">
+								</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<input type="submit" class="btn btn-success col-xs-12"
+											value="Update">
+									</div>
+								</div>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,389 @@
+<div ng-controller="TemplateController as template">
+	<style type="text/css">
+.infographic-box i {
+	font-size: 1.4em;
+	display: block;
+	float: left;
+	margin-right: 15px;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border-radius: 50%;
+	background-clip: padding-box;
+	color: #fff;
+	margin-top: -4px;
+}
+
+.infographic-box {
+	padding: 10px;
+}
+
+.infographic-box .value {
+	font-size: 1.5em;
+	font-weight: 600;
+	margin-top: -5px;
+	display: block;
+	text-align: right;
+}
+</style>
+
+	<h1>Template Management</h1>
+
+
+	<div class="col-lg-8 col-sm-8 col-xs-12"
+		style="float: right; margin-top: -53px;">
+		<div class="main-box infographic-box">
+			<i class="fa fa-eye yellow-bg"></i> <span class="headline"
+				style="display: none;">Template</span> <span class="value"> <span
+				class="timer" data-from="539" data-to="12526" data-speed="1100">
+					{{template.templateName || '---'}} </span>
+			</span>
+		</div>
+	</div>
+
+	<br>
+
+
+	<!-- Template Step1 -->
+	<!--ng-show="currentStep==1"  -->
+	<!-- <div class="col-lg-12" style="display: none;">
+		<div class="main-box clearfix">
+			<header class="main-box-header clearfix">
+				<h2 class="pull-left">Choose Project</h2>
+			</header>
+			<div class="main-box-body clearfix"></div>
+		</div>
+	</div> -->
+
+	<!-- <div class="col-lg-12">
+		<div class="col-lg-6 col-sm-6 col-xs-12">
+			<div class="main-box infographic-box">
+				<i class="fa fa-user red-bg"></i> <span class="headline">Project</span>
+				<span class="value"> <span class="timer" data-from="120"
+					data-to="2562" data-speed="1000" data-refresh-interval="50">
+						{{selectedProject.projectName || '---'}} </span>
+				</span>
+			</div>
+		</div>
+
+		<div class="col-lg-6 col-sm-6 col-xs-12">
+			<div class="main-box infographic-box">
+				<i class="fa fa-eye yellow-bg"></i> <span class="headline">Template</span>
+				<span class="value"> <span class="timer" data-from="539"
+					data-to="12526" data-speed="1100"> {{template.templateName
+						|| '---'}} </span>
+				</span>
+			</div>
+		</div>
+	</div> -->
+
+	<div class="col-lg-6">
+		<div class="main-box clearfix" style="height: 250px;">
+			<header class="main-box-header clearfix">
+				<h2 class="pull-left">Create Template From File</h2>
+			</header>
+			<div class="main-box-body clearfix">
+				<div class="col-lg-12">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label for="templateFile" class="control-label col-lg-4">Template
+								File </label>
+							<div class="col-lg-6">
+								<input type="file" id="templateFile" class="form-control">
+								<span class="help-block">Note: only xml or text file
+									formats are supported!</span><span ng-show="fileError"
+									style="color: red;">{{fileError}}</span>
+							</div>
+							<img alt="processing" data-ng-show="fileUploadInProgress"
+								src="lib/theme/img/loading.gif">
+						</div>
+						<div class="form-group">
+							<div class="col-lg-offset-4  col-lg-6">
+								<input type="reset" value="Clear" class="btn btn-primary">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-lg-6">
+		<div class="main-box clearfix" style="height: 250px;">
+			<header class="main-box-header clearfix">
+				<h2 class="pull-left">Clone Existing Template</h2>
+			</header>
+			<div class="main-box-body clearfix">
+				<div class="col-lg-12">
+					<form class="form-horizontal" name="cloneForm"
+						ng-submit="cloneForm.$valid && cloneTemplate();"
+						novalidate="novalidate">
+						<div class="form-group">
+							<label for="templateFile" class="control-label col-lg-4">Choose
+								Template </label>
+							<div class="col-lg-6">
+								<select ng-model="clonedTemplate.template" class="form-control"
+									required="required" name="clonedTemp"
+									ng-options="temp as temp.templateName for temp in clonableTemplates">
+									<option selected="selected" value="">-- Choose One --</option>
+								</select> <span style="color: red;"
+									ng-show="cloneForm.$submitted && cloneForm.clonedTemp.$error.required">
+									Template is required! </span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="templateFile" class="control-label col-lg-4">Clone
+								Template Name </label>
+							<div class="col-lg-6">
+								<input type="text" ng-model="clonedTemplate.templateName"
+									name="templateName" class="form-control"
+									placeholder="Template Name" required="required"
+									title="Cloned Template Name"> <span style="color: red;"
+									ng-show="cloneForm.$submitted && cloneForm.templateName.$error.required">
+									Clone Template Name is required! </span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-lg-offset-4  col-lg-6">
+								<input type="submit" value="Clone Template"
+									class="btn btn-primary"> <input type="reset"
+									value="Clear" class="btn btn-primary">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Template Step2  -->
+	<!--  ng-show="currentStep==2" -->
+	<div class="col-lg-12">
+		<div class="main-box clearfix">
+			<header class="main-box-header clearfix">
+				<div class="pull-right">
+					<!-- <button type="button" class="btn btn-primary"
+						ng-click="createNewEmptyTemplate();">Create New</button> -->
+					<!-- <button type="button" class="btn btn-primary"
+						ng-click="changeProject();">Change Project</button>
+					<button type="button" class="btn btn-primary">Save
+						Template</button> -->
+					<!-- <button class="md-trigger btn btn-primary mrg-b-lg" id="modal1"
+						style="display: none;" data-modal="modal-1">Fade in &amp;
+						Scale</button> -->
+				</div>
+			</header>
+			<div class="main-box-body clearfix">
+				<div class="row">
+
+					<!-- Template Tree View  -->
+					<!-- <div class="col-lg-3">
+						<div class="tree">
+							<ul>
+								<li ng-repeat="temp in templateList"
+									ng-click="loadTemplate(temp);"><span><i
+										class="fa fa-plus-circle"></i> {{temp.templateName}}</span> <a
+									href="" 
+									class="btn btn-sm btn-default"> <i class="fa fa-play"></i>
+								</a>
+									<ul>
+										<li><span><i class="fa fa-plus-circle"></i> Child</span>
+											<a
+											href="">Goes somewhere</a></li>
+									</ul></li>
+							</ul>
+						</div>
+					</div> -->
+
+					<!-- Template Design screen -->
+					<div class="col-lg-12" ng-show="template">
+
+						<div class="row">
+							<form id="createTempForm" name="createtempform"
+								class="form-horizontal"
+								ng-submit="createtempform.$valid && createNewTemplate()" novalidate="novalidate">
+								<div class="pull-right" ng-show="template"
+									style="margin-top: -20px;">
+									<input type="submit" value="Save Template" ng-hide="isAjax"
+										class="btn btn-primary" for="createTempForm">
+								</div>
+								<h3>
+									<span>Template Configurations</span>
+								</h3>
+
+
+
+								<div class="form-group">
+									<label class="col-lg-4 control-label">Template Name</label>
+									<div class="col-lg-6">
+										<input type="text" class="form-control" name="templateName"
+											ng-model="template.templateName" required="required">
+										<span style="color: red;"
+											ng-show="createtempform.$submitted && createtempform.templateName.$error.required">Template
+											Name is Required!</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-4 control-label">Is Global
+										Template</label>
+									<div class="col-lg-6">
+										<div class="checkbox-nice">
+											<input type="checkbox" id="globalCheckbox" name="isglobal"
+												ng-model="template.isGlobal" ng-checked="template.isGlobal">
+											<label for="globalCheckbox"
+												ng-class="{'label label-success':template.isGlobal, '':!template.isGlobal}">
+												Is Global </label>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-lg-4 control-label">Column Separator</label>
+									<div class="col-lg-6">
+										<input type="text" class="form-control" name="colSeparator"
+											ng-model="template.colSeparator" required="required">
+										<span style="color: red;"
+											ng-show="createtempform.$submitted && createtempform.colSeparator.$error.required">Column
+											Separator is Required!</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-lg-4">Has Header Rows</label>
+									<div class="col-lg-6">
+										<div class="input-group">
+											<span class="input-group-addon"> <input
+												type="checkbox" name="hasFooter"
+												ng-model="template.hasHeaderRows">
+											</span> <input type="text" type="number" name="headerRowCount"
+												ng-disabled="!template.hasHeaderRows" class="form-control"
+												ng-model="template.headerRowsCount">
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label col-lg-4">Has Footer Rows</label>
+									<div class="col-lg-6">
+										<div class="input-group">
+											<span class="input-group-addon"> <input
+												type="checkbox" name="hasFooter"
+												ng-model="template.hasFooterRows">
+											</span> <input type="text" type="number" name="footerRowCount"
+												ng-disabled="!template.hasFooterRows" class="form-control"
+												ng-model="template.footerRowsCount">
+										</div>
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<div class="col-lg-offset-4 col-lg-6"></div>
+								</div>
+							</form>
+						</div>
+
+						<!-- Template Footer Section -->
+						<div class="row">
+							<h3>
+								<span>Template Body</span>
+							</h3>
+							<div class="pull-right">
+								<a href="" class="btn btn-primary"
+									ng-click="addColumn(rowPos.BODY);">Add Column</a>
+							</div>
+							<br> <br>
+							<template-column column="col" ng-repeat="col in columns"></template-column>
+							<br> <br>
+						</div>
+						<!-- Template Header Section -->
+						<div class="row" ng-if="template.hasHeaderRows">
+							<h3>
+								<span>Template Header</span>
+							</h3>
+							<div class="pull-right">
+								<a href="" class="btn btn-primary"
+									ng-click="addColumn(rowPos.HEADER);">Add Column</a>
+							</div>
+							<br> <br>
+							<template-column column="col" ng-repeat="col in headerColumns"></template-column>
+							<br> <br>
+						</div>
+						<!-- Template Footer Section -->
+						<div class="row" ng-if="template.hasFooterRows">
+							<h3>
+								<span>Template Footer</span>
+							</h3>
+							<div class="pull-right">
+								<a href="" class="btn btn-primary"
+									ng-click="addColumn(rowPos.FOOTER);">Add Column</a>
+							</div>
+							<br> <br>
+							<template-column column="col" ng-repeat="col in footerColumns"></template-column>
+							<br> <br>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- <div class="md-modal md-effect-1" id="modal-1">
+		<div class="md-content">
+
+			<div class="modal-header">
+				<button class="md-close close">x</button>
+				<h4 class="modal-title">{{modalTitle}}</h4>
+			</div>
+			<div class="modal-body">
+				<form role="form" class="form-horizontal">
+
+					<div class="form-group">
+						<label class="col-lg-4 control-label">Choose Project:</label>
+						<div class="col-lg-6">
+							<select ng-model="selectedProject" class="form-control"
+								ng-options="project as project.projectName for project in projectList"
+								ng-change="onProjectChange()">
+								<option value="">---Select One Project---</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-lg-offset-4 col-lg-6">
+							<input type="button" class="btn btn-primary"
+								value="Create New Template" ng-disabled="!selectedProject"
+								ng-click="createNewEmptyTemplate();"> <input
+								type="button" class="btn btn-primary" value="Proceed"
+								ng-disabled="!selectedProject" ng-click="loadExistings();">
+							 <input type="button"
+								class="btn btn-primary" value="Clone Existing"
+								ng-click="gotoTemplateView(2)"> <input type="button"
+								class="btn btn-primary" value="Get Template From File"
+								ng-click="gotoTemplateView(3)"> <input type="button"
+								class="btn btn-primary" value="View Existing"
+								ng-click="gotoStep(3)">
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer"></div>
+
+		</div>
+	</div> -->
+	<div class="md-overlay"></div>
+
+	<!-- Template Step 3  -->
+	<!-- ng-show="currentStep==3"  -->
+	<!-- <div class="col-lg-12">
+		<div class="main-box clearfix">
+			<header class="main-box-header clearfix">
+				<h2 class="pull-left">Project - {{selectedProject.projectName}}</h2>
+			</header>
+			<div class="main-box-body clearfix"></div>
+		</div>
+	</div> -->
+
+</div>
+

@@ -1,0 +1,40 @@
+ <div ng-controller="DashBoardController as dashBoard">
+
+	<h1>List Of Users</h1> 
+	<div class="col-lg-12">
+		<div class="main-box no-header clearfix">
+			<div class="main-box-body clearfix">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+						<tr>
+				<!-- <td><strong>Search by Name:</strong></td>
+				<td><input type="text" data-ng-model="contact.contactName"></td> -->
+				<div class="input-group">
+									 <input class="form-control"
+										type="text" name="contactName" ng-model="contact.contactName"
+										placeholder="contactName" required="true" ng-required="true">
+								</div>
+			</tr>
+							<tr>
+								<th><span>ContactName</span></th>
+								<th><span>ImageUrl</span></th>
+								<th><span>FavoriteOrder</span></th>
+								<!-- <th>Admin</th> -->
+								<th> </th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="contact in contactList|filter:contact.contactName">
+								<td>{{contact.contactName}}</td>
+								<td><img src="lib/app/img/user.jpg "width:35px,height:35px alt="">{{contact.contactPhotoUrl}}</td>
+								<td>{{contact.favoriteOrder}}</td>
+										
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>  

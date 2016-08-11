@@ -1,0 +1,219 @@
+<div ng-controller="ProjectController as project">
+	<div class="col-lg-12">
+		<h1>Project Management</h1>
+	</div>
+
+
+	<div class="col-lg-12">
+		<div class="main-box clearfix">
+			<header class="main-box-header clearfix" ng-if="isAdmin">
+				<h2 class="pull-left"></h2>
+				<div class="filter-block pull-right">
+					<a href="#myModal" data-toggle="modal" class="btn btn-primary">Add
+						Project</a>
+				</div>
+			</header>
+			<div class="main-box-body clearfix">
+				<div class="row" ng-if="isAdmin">
+					<div class="col-lg-6">
+						<div class="form-group">
+							<label class="col-lg-12 control-label">Projects</label>
+							<div class="col-lg-12">
+								<select ng-model="parent.selectedProject" class="form-control"
+									ng-change="loadProjectUsers()"
+									ng-options="project as project.projectName for project in projectList">
+									<option value="">---Select One Project---</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6"></div>
+				</div>
+
+
+				<div class="row" ng-show="parent.selectedProject"></div>
+				<br> <br>
+
+				<div class="row" ng-show="parent.selectedProject">
+					<div class="col-lg-4">
+
+
+						<div class="form-group">
+							<label class="col-lg-12 control-label">Add NewUser</label>
+							<div class="col-lg-12">
+								<select ng-model="selectedUser" class="form-control"
+									ng-options="user.owner as user.emailAddress for user in usersSuggestionList">
+									<option value="">---Select One User---</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group" ng-show="selectedUser">
+							<div class="form-group">
+								<label class="col-lg-12 control-label">{{selectedUser.firstName+"
+									"+selectedUser.lastName}}</label>
+								<div class="col-lg-12">
+									<div class="checkbox-nice">
+										<input id="terms-cond" type="checkbox"
+											ng-model="isSelecteUserAdmin"> <label
+											for="terms-cond">Project admin </label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+
+							<div class="col-lg-6">
+								<br> <input type="button" class="btn btn-primary"
+									ng-click="addNewUser()" value="Add User">
+							</div>
+						</div>
+					</div>
+					<!-- <div class="col-lg-4 col-md-6 col-sm-6">
+						<div class="main-box clearfix project-box emerald-box">
+							<div class="main-box-body clearfix">
+								<div class="project-box-header emerald-bg">
+									<div class="name">
+										<a href="#"> {{parent.selectedProject.projectName}} </a>
+									</div>
+								</div>
+								<div class="project-box-content">
+									<span class="chart" data-percent="39"> <span
+										class="percent">39</span>%<br> <span class="lbl">completed</span>
+										<canvas height="130" width="130"></canvas></span>
+								</div>
+								<div class="project-box-footer clearfix">
+									<a href="#"> <span class="value">12</span> <span
+										class="label">Tasks</span>
+									</a> <a href="#"> <span class="value">1</span> <span
+										class="label">Alerts</span>
+									</a> <a href="#"> <span class="value">82</span> <span
+										class="label">Messages</span>
+									</a>
+								</div>
+								<div class="project-box-ultrafooter clearfix">
+									<img class="project-img-owner" alt=""
+										src="lib/theme/img/samples/scarlet-159.png"
+										data-toggle="tooltip" title=""
+										data-original-title="Scarlett Johansson"> <img
+										class="project-img-owner" alt=""
+										src="lib/theme/img/samples/lima-300.jpg" data-toggle="tooltip"
+										title="" data-original-title="Adriana Lima"> <img
+										class="project-img-owner" alt=""
+										src="lib/theme/img/samples/emma-300.jpg" data-toggle="tooltip"
+										title="" data-original-title="Emma Watson"> <img
+										class="project-img-owner" alt=""
+										src="lib/theme/img/samples/angelina-300.jpg"
+										data-toggle="tooltip" title=""
+										data-original-title="Angelina Jolie"> <a href="#"
+										class="link pull-right"> <i
+										class="fa fa-arrow-circle-right fa-lg"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+
+					<div class="col-lg-8">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th><span>Email</span></th>
+										<th>Admin</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="user in projectUsers track by $index">
+										<td>1{{user.projectUser.userName}}</td>
+										<td><p class="label" ng-hide="user.admin">
+												<input id="" type="checkbox" ng-checked="false"
+													ng-model="user.admin" ng-change="updateUser(user);">
+											</p>
+											<p class="label" ng-show="user.admin">
+												<input id="" type="checkbox" ng-checked="true"
+													ng-model="user.admin" ng-change="updateUser(user);">
+											</p></td>
+										<td><a href="" class="table-link danger"
+											ng-click="deleteUser(user)"> <span class="fa-stack">
+													<i class="fa fa-square fa-stack-2x"></i> <i
+													class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+											</span>
+										</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- create project model -->
+		<div class="modal fade in" id="myModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="false"
+			style="display: none;">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">×</button>
+						<h4 class="modal-title">Modal title</h4>
+					</div>
+					<div class="modal-body">
+						<div class="row" style="">
+							<form role="form" class="form-horizontal" id="projform"
+								data-ng-submit="projform.$valid && createNewProject()"
+								name="projform" novalidate="novalidate">
+
+								<div class="form-group">
+									<label class="control-label col-lg-4" for="project_name">
+										*Project Name</label>
+									<div class="col-lg-6">
+										<input data-ng-model="project.projectName"
+											class="form-control" id="project_name"
+											placeholder="Enter project name" ng-required="true"
+											ng-required="true" name="projname" ng-minlength="4">
+									</div>
+									<div class="col-lg-offset-4 col-lg-6">
+										<span class="error-msg"
+											ng-show="projform.$submitted && form.projname.$error.required">Project
+											name is required</span> <span class="error-msg"
+											ng-show="projform.projname.$error.minlength">Project
+											name should be minimum of 4 characters long</span>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label col-lg-4" for="project_desc">
+										*Project Description</label>
+									<div class="col-lg-6">
+										<input class="form-control"
+											data-ng-model="project.projectDesc" id="project_desc"
+											name="projDesc" placeholder="decription">
+									</div>
+								</div>
+								<!-- <div class="form-group">
+								<div class="wizard-buttons-container">
+									<button type="submit" data-ng-hide="isAjax"
+										class="btn btn-success">Create Project</button>
+									<img alt="processing" data-ng-show="isAjax"
+										src="lib/theme/img/loading.gif">
+								</div>
+							</div> -->
+							</form>
+
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" form="projform" class="btn btn-primary">Create</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

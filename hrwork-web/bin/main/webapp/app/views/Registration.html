@@ -1,0 +1,106 @@
+<div data-ng-controller="CreateUserController as createUser">
+	<div class="col-xs-12">
+		<div id="login-box">
+			<div id="login-box-holder">
+				<div class="row">
+					<div class="col-xs-12">
+						<header id="login-header">
+							<div id="login-logo">
+								<h1>HR Work</h1>
+							</div>
+						</header>
+						<div id="login-box-inner">
+							<form role="form" name="projform"
+								ng-submit="projform.$valid && saveUser(user)"
+								novalidate="novalidate" ng-if="projects.length!=0">
+
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user"
+										style="color: #03a9f4;"></i></span> <input class="form-control"
+										type="text" name="emailAddress" ng-model="user.emailAddress"
+										placeholder="Email address" required="true" ng-required="true">
+								</div>
+								<span class="error-msg"
+									ng-show="projform.$submitted && projform.emailAddress.$error.required">Username
+									is required!</span>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user"
+										style="color: #03a9f4;"></i></span> <input class="form-control"
+										type="text" name="firstName" ng-model="user.firstName"
+										placeholder="FirstName" required="true" ng-required="true">
+								</div>
+								<span class="error-msg"
+									ng-show="projform.$submitted && projform.firstName.$error.required">firstName
+									is required!</span>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user"
+										style="color: #03a9f4;"></i></span> <input class="form-control"
+										type="text" name="lastName" ng-model="user.lastName"
+										placeholder="LastName" required="true" ng-required="true">
+								</div>
+								<span class="error-msg"
+									ng-show="projform.$submitted &&projform.lastName.$error.required">lastName
+									is required!</span>
+
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user"
+										style="color: #03a9f4;"></i></span> <input class="form-control"
+										type="text" name="phoneNumber" ng-model="user.phoneNumber"
+										placeholder="PhoneNumber" required="true" ng-required="true">
+								</div>
+								<span class="error-msg"
+									ng-show="projform.$submitted && projform.phoneNumber.$error.required">PhoneNumber
+									is required!</span>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user"
+										style="color: #03a9f4;"></i></span> <input class="form-control"
+										type="text" name="address" ng-model="user.address"
+										placeholder="address" required="true" ng-required="true">
+								</div>
+								<span class="error-msg"
+									ng-show="projform.$submitted && projform.address.$error.required">address
+									is required!</span>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-key"
+										style="color: #03a9f4;"></i></span> <input type="password"
+										class="form-control" ng-required="true" ng-minlength="4"
+										ng-model="user.password" name="pass" required="true"
+										placeholder="Password">
+								</div>
+								<span class="error-msg"
+									ng-show="projform.$submitted && projform.pass.$error.required">Password
+									is required!</span> <span class="error-msg"
+									ng-show="projform.pass.$error.minlength">Password should
+									be minimum of 4 characters long!</span>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-key"
+										style="color: #03a9f4;"></i></span> <input type="password"
+										class="form-control" ng-required="true" ng-minlength="4"
+										ng-model="user.retypePassword" name="confirmpass"
+										required="true" placeholder="Re-enter password">
+								</div>
+								<span class="error-msg"
+									ng-show="projform.$submitted && projform.confirmpass.$error.required">Password
+									is required!</span> <span class="error-msg"
+									ng-show="projform.pass.$error.minlength">Password should
+									be minimum of 4 characters long!</span>
+
+								<div class="row">
+									<div class="col-xs-12">
+										<input type="submit" class="btn btn-success col-xs-12"
+											value="submit">
+							</form>
+
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+</div>
+</div>

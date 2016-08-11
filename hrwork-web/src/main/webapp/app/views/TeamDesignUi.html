@@ -1,0 +1,64 @@
+
+<div data-ng-controller="TeamDesign as TeamDesign">
+	<h1>Team Design</h1>
+	<form name="teamDesign">
+		<table class="table" style="width: 100%;">
+			<tr>
+				<td align="left"><div class="col-lg-12 " style="float: left;"
+						class="form-control">
+						Hr <select data-ng-model='hr' data-ng-change='selecthr(hr)'
+							data-ng-options='list for list in managerList' id="chkdwn2">
+
+							<option value="">Select</option>
+						</select>
+					</div></td>
+				<td align="left"><div class="col-lg-12 " style="float: left;"
+						class="form-control">
+						Employee <select data-ng-model='user' id="dropdown" disabled="disabled"
+							data-ng-options='user for user in  otherUser' multiple>
+							<option value="">Select</option>
+						</select>
+					</div></td>
+			<tr>
+				<td style="text-align: center"><div class="row">
+						<input type="submit" data-ng-click="creatTeam(hr,user)"
+							class="btn btn-success col-xs-6" value="Create Team">
+					</div></td>
+			</tr>
+		</table>
+	</form>
+	<div data-ng-show="test!=''">
+		<h2>List Of Team Members</h2>
+		<div data-ng-repeat="userName in test">
+			<div class="col-lg-4 col-md-5 col-sm-6"
+				style="width: 228px; height: 235px;">
+				<div class="main-box clearfix profile-box" style="width: 211px;">
+					<div class="main-box-body clearfix" style="width: 209px;">
+						<div class="profile-box-header"
+							style="background-image: url(../lib/theme/img/samples/user1.jpg);">
+							<img src="lib/app/img/user.jpg" alt=""
+								class="profile-img img-responsive center-block">
+						</div>
+						<div class="profile-box-footer clearfix">
+							<a href="" style="all: inherit; padding: 10px 10px 10px"> <span
+								class="label" style="align-items: center;">{{userName}}</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			$("#chkdwn2").click(function() {
+				if ($(this).is(":checked")) {
+					$("#dropdown").prop("disabled", true);
+				} else {
+					$("#dropdown").prop("disabled", false);
+				}
+			});
+		});
+	</script>
+</div>

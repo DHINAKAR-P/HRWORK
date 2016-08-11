@@ -1,0 +1,49 @@
+<div data-ng-controller="ApplyLeaveController as applyleave">
+	<div class="col-lg-12">
+		<h1>Apply Leave</h1>
+	</div>
+
+	<div class="col-lg-12">
+		<div class="main-box">
+			<header class="main-box-header clearfix">
+				<div class="form-group"></div>
+			</header>
+			<div class="main-box-body clearfix">
+				<form role="form" data-ng-submit="form.$valid && applyleave(leave)"
+					name="form" novalidate="novalidate">
+					<div class="input-group">
+						<div class="input-group date">
+							leaveFromDate:<input type="date" class=" form-control"
+								id="datepickerDate" placeholder="Leave From Date"
+								data-ng-model="leave.leaveFromDate" />
+						</div>
+					</div>
+					<br>
+					<div class="input-group">
+						<div class="input-group date">
+							leaveToDate:<input type="date" class=" form-control"
+								id="datepickerDates" placeholder="Leave To Date"
+								data-ng-model="leave.leaveToDate" />
+						</div>
+					</div>
+					<br>
+					<div class="input-group">
+						<div class="input-group date">
+							<textarea rows="10" cols="50" class=" form-control"
+								data-ng-model="leave.summary" placeholder="Reason for leave"></textarea>
+						</div>
+					</div>
+					<br>
+ 
+					<div class="row">
+						<div class="col-xs-4">
+							<input type="submit" class="btn btn-success col-xs-12"
+								value="Apply Leave">
+						</div>
+					</div> 
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+

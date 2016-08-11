@@ -1,0 +1,30 @@
+[
+{
+      "menu":"DashBoard",
+      "href":"#/dashBoard",
+      "icon":"fa  fa-dashboard",
+      "access":"M_ADMIN,USER"
+},
+{
+      "menu":"User Management",
+      "hasRole":"M_ADMIN",
+      "href":"",
+      "icon":"fa  fa-user",
+      "submenus":[  
+        {  
+            "submenu":"List Of Users",
+            "href":"#/updateUserList"
+         } , {  
+            "submenu":"Create User",
+            "href":"#/createUser"
+         }         
+      ]
+},
+{
+      "menu":"Project Management",
+      "hasRole":"M_ADMIN,USER",
+      "href":"#/project",
+      "icon":"fa  fa-table"
+}
+
+]

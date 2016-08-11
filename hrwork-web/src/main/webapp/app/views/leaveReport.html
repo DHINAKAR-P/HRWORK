@@ -1,0 +1,104 @@
+<div data-ng-controller="LeaveReportController">
+	<h1>Leave Reports</h1>
+	<form name="leaveReportForm" role="form"
+		data-ng-submit="leaveReportForm.$valid && SearchLeaves()"
+		novalidate="novalidate">
+		<div class="col-lg-12">
+			<div class="main-box no-header clearfix">
+				<div class="main-box-body clearfix">
+					<div class="table-responsive">
+						<h1>
+							<center>
+								<span>List Employee's Leave</span>
+							</center>
+						</h1>
+						<table class="table" style="width: 100%;">
+							<tr>
+								<td align="left"><div class="col-lg-12 "
+										style="float: left;" class="form-control">
+										Years: <select data-ng-model='years'
+											data-ng-options='leaveYear for leaveYear in leaveYear'>
+
+											<option value="">------</option>
+										</select>
+									</div></td>
+								<td align="left"><div class="col-lg-12 "
+										style="float: left;">
+										Months: <select data-ng-model='Months'
+											data-ng-options='leaveMonths for leaveMonths in leaveMonths'>
+											<option value="">----</option>
+										</select>
+									</div></td>
+								<td><div class="row" style="float: center;">
+										<div class="col-xs-12">
+											<input type="submit" class="btn btn-success col-xs-12"
+												value="search Leave">
+										</div>
+									</div>
+						</table>
+
+
+
+						<div class="main-box-body clearfix" data-ng-show="leaveList !=''">
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+										<tr>
+											<th><span>UserName</span></th>
+											<th><span>NoOfDays</span></th>
+											<th><span>LeaveFromDate</span></th>
+											<th><span>LeaveToDate</span></th>
+											<th><span>LeaveStatus</span></th>
+											<th><span>LeaveDeatils</span></th>
+											<th><span>UpdateLeave</span></th>
+											<th><span>DeleteLeave</span></th>
+											<th><span>CancelLeave</span></th>
+										</tr>
+									</thead>
+									<tbody>
+
+										<tr data-ng-repeat="leave in leaveList |filter:filterLeaveStatus"
+											data-ng-model="leaveList">
+											<td>{{leave.leaveFor.userName}}</td>
+											<td>{{leave.numberOfDays}}</td>
+											<td>{{leave.leaveFromDate}}</td>
+											<td>{{leave.leaveToDate}}</td>
+											<td><p class="label label-success">{{leave.status}}</p></td>
+											<td>{{leave.summary}}</td>
+											<td><a href="" data-ng-click="edit(leave);"
+												class="table-link"> <span class="fa-stack"> <i
+														class="fa fa-square fa-stack-2x"></i> <i
+														class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+												</span>
+											</a></td>
+											<td><a href="" data-ng-click="deleteleave(leave)"
+												class="table-link"> <span
+													class="glyphicon glyphicon-remove-circle"></span>
+											</a></td>
+											<td style="text-align: center"><div class="row">
+													<a data-toggle="modal"
+														data-ng-click="changeleavestatus(leave)"
+														data-ng-disabled="leave.status=='CANCEL'"
+														class="btn btn-primary mrg-b-lg">{{leave.status}}</a>
+												</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<center>
+							<div class="check-element animate-show"
+								data-ng-show="leaveList==''||(leave.statust!='PENDING_APPROVAL')">
+								<span class="glyphicon glyphicon-thumbs-down"></span> No Leave
+								to list .!!!
+							</div>
+						</center>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</form>
+</div>
+

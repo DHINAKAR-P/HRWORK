@@ -1,0 +1,78 @@
+
+<div class="row" data-ng-controller="LoginController as login">
+	<div class="col-xs-12">
+		<div id="login-box">
+			<div id="login-box-holder">
+				<div class="row">
+					<div class="col-xs-12">
+						<header id="login-header">
+							<div id="login-logo">
+								<h1>HR work</h1>
+							</div>
+						</header>
+						<div id="login-box-inner">
+							<form role="form" name="logform"
+								data-ng-submit="logform.$valid && doLogin()"
+								novalidate="novalidate">
+						 
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user"
+										style="color: #03a9f4;"></i></span> <input class="form-control "
+										type="text" name="userName" data-ng-model="user.userName"
+										placeholder="User Name" required="required"
+										data-ng-minlength="4" data-ng-required="true">
+								</div> 
+								<span class="error-msg"
+									data-ng-show="logform.$submitted && logform.userName.$error.required">Username
+									is required!</span><span class="error-msg"
+									data-ng-show="logform.userName.$error.minlength">Username
+									should be minimum of 4 characters long!</span>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-key"
+										style="color: #03a9f4;"></i></span> <input type="password"
+										class="form-control" data-ng-required="true"
+										data-indicator="pwindicator" data-ng-minlength="4"
+										data-ng-model="user.password" name="pass" required="required"
+										placeholder="Password">
+								</div>
+								<span class="error-msg "
+									data-ng-show="logform.$submitted && logform.pass.$error.required">Password
+									is required!</span> <span class="error-msg"
+									data-ng-show="logform.pass.$error.minlength">Password
+									should be minimum of 4 characters long!</span>
+								<div id="remember-me-wrapper">
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="checkbox-nice">
+												<input type="checkbox" id="remember-me" checked="checked">
+												<label for="remember-me"> Remember me </label>
+											</div>
+										</div>
+										<a href="forgot-password-full.html" id="login-forget-link"
+											class="col-xs-6"> Forgot password? </a>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<input type="submit" class="btn btn-success col-xs-12"
+											value="Login">
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="login-box-footer">
+			<div class="row">
+				<div class="col-xs-12">
+					Do not have an account? <a href="#/Registration"> Register now
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

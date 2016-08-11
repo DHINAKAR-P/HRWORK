@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	  http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/data/jpa 
+		http://www.springframework.org/schema/data/jpa/spring-jpa.xsd 
+		http://www.springframework.org/schema/jdbc 
+		http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/security 
+		http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- Uncomment and add your base-package here: -->
+	<context:component-scan base-package="com.d.hrwork.*" />
+	<mvc:annotation-driven></mvc:annotation-driven>
+
+	<jpa:repositories base-package="com.d.hrwork.repository"></jpa:repositories>
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<context:property-placeholder />
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="com.d.hrwork.model" />
+		<property name="jpaVendorAdapter">
+
+
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- DataSource -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+<!-- 		<property name="url" value="jdbc:mysql://localhost:3306/hrwork" />
+		<property name="username" value="root" />
+		<property name="password" value="password" /> -->
+
+		<property name="url"
+	value="jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/hrwork" />
+	<property name="username" value="adminGj9d31V" />
+	<property name="password" value="CBbjUq5TJPdg" />
+	</bean>
+	<!-- User service for spring security -->
+
+	<beans:bean id="userDetailsService" class="com.d.hrwork.service.impl.AuthImpl" />
+	<security:http security="none" pattern="/login"></security:http>
+	<security:http security="none" pattern="/Registration"></security:http>
+	<security:http auto-config="true">
+		<security:intercept-url pattern="/leave/**"
+			access="ROLE_ADMIN,ROLE_HR,ROLE_MANAGER,
+		                                                    ROLE_EMPLOYEE,ROLE_CONTRACTOR" />
+		<security:intercept-url pattern="/user/**"
+			access="ROLE_ADMIN,ROLE_HR,ROLE_MANAGER,
+		                                                    ROLE_EMPLOYEE,ROLE_CONTRACTOR" />
+
+		<security:form-login authentication-failure-url="/login/loginFailure/"
+			always-use-default-target="true" login-page="/login.html"
+			default-target-url="/login/loginSuccess/" />
+		<security:access-denied-handler
+			error-page="/login/accessDenied/" />
+		<!-- <security:logout logout-success-url="/login" logout-url="/j_spring_security_logout" 
+			/> -->
+
+		<!-- <security:session-management invalid-session-url="/login/invalidateSession/" 
+			session-fixation-protection="newSession"> <security:concurrency-control max-sessions="1" 
+			expired-url="/login/sessionExpiry/" /> </security:session-management> -->
+
+	</security:http>
+
+	<security:authentication-manager>
+		<security:authentication-provider
+			user-service-ref="userDetailsService">
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<bean id="persistenceExceptionTranslationPostProcessor"
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize">
+			<value> 10000000 </value>
+		</property>
+		<property name="maxInMemorySize">
+			<value> 10000000 </value>
+			
+		</property>
+		</bean>
+</beans>

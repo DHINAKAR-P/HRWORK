@@ -1,0 +1,41 @@
+<div data-ng-controller="ApproveLeaveController as ApproveLeave">
+	<h1>List Of Leaves</h1>
+	<form name="ApproveLeaveForm">
+		<div class="col-lg-12">
+			<div class="main-box no-header clearfix">
+				<div class="main-box-body clearfix">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th><span>UserName</span></th>
+									<th><span>NoOfDays</span></th>
+									<th><span>LeaveFromDate</span></th>
+									<th><span>LeaveToDate</span></th>
+									<th><span>LeaveStatus</span></th>
+									<th><span>LeaveDeatils</span></th>
+									<th><span>ApproveLeave</span></th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-ng-repeat="leave in ApproveLeave">
+									<td>{{leave.leaveFor.userName}}</td>
+									<td>{{leave.numberOfDays}}</td>
+									<td>{{leave.leaveFromDate}}</td>
+									<td>{{leave.leaveToDate}}</td>
+									<td><p class="label label-success">{{leave.status}}</p></td>
+									<td>{{leave.summary}}</td>
+
+									<td><input type="button" id="submitBtn"
+										data-ng-click="changeleavestatus(leave)" data-ng-disabled="leave.status=='CANCEL'"
+										class="btn btn-success col-xs-12" value="{{leave.status}}"></td>
+								</tr>
+							</tbody>  
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

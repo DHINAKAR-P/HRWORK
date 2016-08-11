@@ -1,0 +1,66 @@
+<div ng-controller="UpdateUserController as userList">
+	<h1>List Of Users</h1> 
+	<div class="col-lg-12">
+		<div class="main-box no-header clearfix">
+			<div class="main-box-body clearfix">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th><span>User</span></th>
+								<th><span>Email</span></th>
+								<th>Admin</th>
+								<th> </th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="user in userList">
+								<td>{{user.firstName}}</td>
+								<td>{{user.emailAddress}}</td>
+								<td><p class="label label-danger"
+										ng-hide="hasAdminRole(user)">No</p>
+									<p class="label label-success" ng-show="hasAdminRole(user)">Yes</p>
+								</td>
+								<td><a href="" ng-click="edit(user);" class="table-link">
+										<span class="fa-stack"> <i
+											class="fa fa-square fa-stack-2x"></i> <i
+											class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+									</span>
+								</a> <!-- <a data-toggle="modal" href="#example{{user.id}}"
+									class="table-link danger"> <span class="fa-stack"> <i
+											class="fa fa-square fa-stack-2x"></i> <i
+											class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+									</span>
+								</a> -->
+									<div class="modal fade" id="example{{user.id}}" tabindex="-1"
+										role="dialog" aria-labelledby="myModalLabel"
+										aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header"
+													style="border-width: 0px !important">
+													<a class="close" data-dismiss="modal">X</a>
+												</div>
+												<div class="modal-body">
+													<h3 style="border-bottom: 0px !important">
+														Are you sure want to delete<B> {{user.firstName}}</B>
+														user?
+													</h3>
+												</div>
+												<div class="modal-footer"
+													style="border-width: 0px !important">
+													<a href="" class="btn btn-success" id=""
+														ng-click="deleteUser(user.id);" data-dismiss="modal">Yes</a>
+													<a href="" class="btn btn-success" data-dismiss="modal">no</a>
+												</div>
+											</div>
+										</div>
+									</div></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

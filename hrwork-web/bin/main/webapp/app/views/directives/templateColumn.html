@@ -1,0 +1,23 @@
+<div class="col-lg-3">
+	<div class="main-box clearfix profile-box-menu">
+		<div class="profile-box-content clearfix">
+			<ul class="menu-items">
+				<!-- <span
+						class="label label-warning label-circle pull-right"><i
+							class="fa fa-trash-o fa-stack-1x fa-inverse"></i></span>  -->
+				<li class="green-bg" style="text-align: center; padding: 10px"><span
+					class="clearfix"><span>Column : {{column.colOrder}}</span><span
+						class="pull-right" class="btn" ng-click="deleteColumn();"><i
+							class="fa fa-times-circle "></i></span> </span></li>
+				<li><input type="text" class="form-control"
+					ng-model="column.columnName" placeholder="Column Name"
+					title="Column Name"></li>
+				<li><select class="form-control" ng-model="column.columnType"
+					title="Data Type"
+					ng-options="dataType.id as (dataType.lovKey+'-'+dataType.lovVal) for dataType in dataTypes">
+						<option value="">--Choose One--</option>
+				</select></li>
+			</ul>
+		</div>
+	</div>
+</div>

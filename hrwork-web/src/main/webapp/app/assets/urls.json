@@ -1,0 +1,19 @@
+{
+	"baseUrl":"http://hrwork-10d.rhcloud.com/hrwork-rest/",
+	"login":"/login",
+	"registration":"login/signup",
+	"listOfUser":"user/listOfUser",
+	"updateuser":"user/updateUser",
+	"findUserById":"user/findUserById",
+	"findByUserName":"user/findByUserName",
+	"userStatus":"user/userStatus",
+	"applyleave":"leave/applyleave",
+	"listuserleave":"leave/LeavesForuser",
+	"listalluserLeaves":"leave/listOfLeave",
+	"leaveStatus":"leave/leavestatus",
+	"updateLeaveDetails":"leave/updateleave",
+	"leaveReport":"leave/leavelistByMonth",
+	"DeleteLeave":"leave/deleteLeave",
+	"resetPassword":"login/resetPassword",
+	"checkuserName":"login/checkuserName"
+	}

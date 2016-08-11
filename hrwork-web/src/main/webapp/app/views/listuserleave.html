@@ -1,0 +1,61 @@
+<div data-ng-controller="ListuserLeaveController as leaveList">
+	<h1>List Of Leaves</h1>
+	<form name="dashBoardForm">
+		<div class="col-lg-12">
+			<div class="main-box no-header clearfix">
+				<div class="main-box-body clearfix">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th><span>UserName</span></th>
+									<th><span>NoOfDays</span></th>
+									<th><span>LeaveFromDate</span></th>
+									<th><span>LeaveToDate</span></th>
+									<th><span>LeaveStatus</span></th>
+									<th><span>LeaveDeatils</span></th>
+									<th><span>UpdateLeave</span></th>
+									<th><span>DeleteLeave</span></th>
+									<th><span>CancelLeave</span></th>
+								</tr>
+							</thead>
+							<tbody>
+								
+								<tr data-ng-repeat="leave in leaveList" data-ng-model="leaveList">
+									<td>{{leave.leaveFor.userName}}</td>
+									<td>{{leave.numberOfDays}}</td>
+									<td>{{leave.leaveFromDate}}</td>
+									<td>{{leave.leaveToDate}}</td>
+									<td><p class="label label-success">{{leave.status}}</p></td>
+									<td>{{leave.summary}}</td>
+									<td><a href="" data-ng-click="edit(leave);" class="table-link">
+											<span class="fa-stack"> <i
+												class="fa fa-square fa-stack-2x"></i> <i
+												class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+										</span>
+									</a></td>
+									<td><a href="" data-ng-click="deleteleave(leave)"
+										class="table-link"> <span
+											class="glyphicon glyphicon-remove-circle"></span>
+									</a></td>
+									<td style="text-align: center"><div class="row">
+											<input type="submit" data-ng-click="cancelleave(leave)"
+												data-ng-disabled="leave.status=='CANCEL'"
+												class="btn btn-success col-xs-12" value="{{leave.status}}">
+										</div></td>
+								</tr>
+								<tr>
+									<th>
+										<div class="check-element animate-show" data-ng-show="leaveList==''">
+											<span class="glyphicon glyphicon-thumbs-down"></span> No Leaves to list .!!!
+										</div>
+									</th>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

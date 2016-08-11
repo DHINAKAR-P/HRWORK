@@ -1,0 +1,47 @@
+<div data-ng-controller="UpdateLeaveController as updateleaveDetails">
+	<div class="col-lg-12">
+		<h1>Update Leave</h1>
+	</div>
+	<div class="col-lg-12">
+		<div class="main-box">
+			<header class="main-box-header clearfix">
+				<div class="form-group"></div>
+			</header>
+			<div class="main-box-body clearfix">
+				<form role="form" ng-submit="form.$valid && updateleave(leave)"
+					name="form" novalidate="novalidate">
+					<div class="input-group">
+						<div class="input-group date">
+							<input type="date" class=" form-control"
+								ng-model="leave.leaveFromDate" />
+						</div>
+					</div>
+					<br>
+					<div class="input-group">
+						<div class="input-group date">
+							<input type="date" class=" form-control"
+								ng-model="leave.leaveToDate" />
+						</div>
+					</div>
+					<br>
+					<div class="input-group">
+						<div class="input-group date">
+							<!-- <input type="text" class=" form-control" data-ng-model="leave.summary"
+								placeholder="Reason for leave" /> -->
+								<textarea rows="10" cols="50" data-ng-model="leave.summary" placeholder="Reason for leave"></textarea>
+						</div>
+					</div>
+
+					<br>
+					<div class="row">
+						<div class="col-xs-6">
+							<input type="submit" class="btn btn-success col-xs-6"
+								value=" Upate Leave Details">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+

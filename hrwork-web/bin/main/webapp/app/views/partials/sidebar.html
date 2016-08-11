@@ -1,0 +1,54 @@
+<!-- <div id="nav-col" ng-controller="MenuBarController as menuCtrl">
+	<section id="col-left" class="col-left-nano">
+		<div id="col-left-inner" class="col-left-nano-content">
+			<div id="user-left-box"
+				class="clearfix hidden-sm hidden-xs dropdown profile2-dropdown">
+				<img alt="" src="lib/app/img/user.jpg">
+				<div class="user-box">
+					<span class="name"> <a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"> <span>{{userName}}</span> <i
+							class="fa fa-angle-down"></i>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="#/editProfile"><i class="fa fa-user"></i>Profile</a></li>
+							<li><a href="#/error404"><i class="fa fa-cog"></i>Settings</a></li>
+							<li><a href="#/error404"><i class="fa fa-envelope-o"></i>Messages</a></li>
+							<li><a href="" ng-click="logout()"><i
+									class="fa fa-power-off"></i>Logout</a></li>
+						</ul>
+					</span> <span class="status"> <i class="fa fa-circle"></i> Online
+					</span>
+				</div>
+			</div>
+			<div class="collapse navbar-collapse navbar-ex1-collapse"
+				id="sidebar-nav">
+
+				first level menu 
+				<ul class="nav nav-pills nav-stacked">
+					<li class="nav-header nav-header-first hidden-sm hidden-xs">
+						Navigation</li>
+
+					<li ng-repeat="menu in menus" ng-if="hasRole(menu)"><a
+						href="{{menu.href}}" ng-class="{'dropdown-toggle':menu.submenus}">
+							<i class="{{menu.icon}}"></i> <span>{{menu.menu}}</span> <i
+							class="fa fa-angle-right drop-icon" ng-if="menu.submenus"></i>
+					</a> second level menu 
+						<ul class="submenu" ng-if="menu.submenus">
+							<li ng-repeat="submenu in menu.submenus"><a
+								href="{{submenu.href}}"> <i class="{{submenu.icon || 'fa fa-puzzle-piece'}}"
+									style="margin-left: -10px; margin-right: 10px; color: #03a9f4;"></i>{{submenu.submenu}}
+									<i class="fa fa-angle-right drop-icon" ng-if="submenu.submenus"></i>
+							</a> third level menu
+								<ul class="submenu" style="display: block;"
+									ng-if="submenu.submenus">
+									<li><a href="{{s3m.href}}"
+										ng-repeat="s3m in submenu.submenus"> {{s3m.submenu}} </a></li>
+								</ul></li>
+
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<div id="nav-col-submenu"></div>
+</div> -->

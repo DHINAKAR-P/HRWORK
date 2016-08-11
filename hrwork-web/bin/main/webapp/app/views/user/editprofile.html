@@ -1,0 +1,107 @@
+<div data-ng-controller="EditProfileController as editprofile">
+
+	<div class="col-lg-12">
+		<div class="row">
+			<div class="col-lg-12">
+				<ol class="breadcrumb">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Users</a></li>
+					<li class="active"><span>User Profile</span></li>
+				</ol>
+				<h1>User Profile</h1>
+			</div>
+		</div>
+		<div class="row" id="user-profile">
+			<div class="col-lg-12">
+				<div class="main-box clearfix">
+					<header class="main-box-header clearfix">
+						<h2>Update Profile</h2>
+					</header>
+					<div class="main-box-body clearfix">
+						<form role="form" data-ng-submit="updateProfile(user)">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<div class="alert alert-success fade in" ng-show="message!=''">
+										<i class="fa fa-check-circle fa-fw fa-lg"></i> {{message}}
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label" for=""> First Name : </label><input
+										data-ng-model="user.firstName" class="form-control"
+										placeholder="Enter first name">
+								</div>
+								<div class="form-group">
+									<label class="control-label" for=""> Last Name : </label><input
+										class="form-control" data-ng-model="user.lastName" id=""
+										placeholder="last name">
+								</div>
+								<div class="form-group">
+									<label class="control-label" for=""> Email address : </label><input
+										class="form-control" data-ng-model="user.emailAddress" id=""
+										placeholder="last name">
+								</div>
+
+								<!-- 	<div class="form-group">
+										<label class="control-label" for=""> Age : </label><input
+											class="form-control" data-ng-model="user.age" id=""
+											placeholder="last name">
+									</div>
+
+									<div class="form-group">
+										<label class="control-label" for="">  Address1 : </label><input
+											class="form-control" data-ng-model="user.address1" id=""
+											placeholder="last name">
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label class="control-label" for=""> Address2 : </label><input
+											class="form-control" data-ng-model="user.address2" id=""
+											placeholder="last name">
+									</div>
+
+									<div class="form-group">
+										<label class="control-label" for=""> City : </label><input
+											class="form-control" data-ng-model="user.city" id=""
+											placeholder="last name">
+									</div>
+
+									<div class="form-group">
+										<label class="control-label" for=""> State : </label><input
+											class="form-control" data-ng-model="user.state" id=""
+											placeholder="last name">
+									</div>
+									<div class="form-group">
+										<label class="control-label" for=""> Country : </label><input
+											class="form-control" data-ng-model="user.country" id=""
+											placeholder="last name">
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="">Update Profile Image : </label> <img
+											alt="" src="lib/theme/img/samples/scarlet-159.png"
+											class="profile-img img-responsive center-block">
+										<div class="profile-label">
+											<input type="file">
+										</div>
+									</div> -->
+								<div class="form-group">
+									<label class="control-label" for=""> Phone : </label><input
+										class="form-control" data-ng-model="user.phone" id=""
+										placeholder="Phone">
+								</div>
+								<div class="profile-message-btn center-block text-center">
+									<button data-ng-hide="isAjax" type="submit"
+										class="btn btn-success">Update</button>
+									<img alt="processing" data-ng-show="isAjax"
+										src="lib/theme/img/loading.gif">
+								</div>
+							</div>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

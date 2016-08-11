@@ -1,0 +1,97 @@
+<div class="row" ng-controller="LoginController as login">
+	<div class="col-xs-12">
+		<div id="login-box">
+			<div id="login-box-holder">
+				<div class="row">
+					<div class="col-xs-12">
+						<header id="login-header">
+							<div id="login-logo">
+								<h1>HR work</h1>
+							</div>
+						</header>
+ 						<div id="login-box-inner"> 
+<!-- 							<form role="form" name="projform" -->
+<!-- 								ng-submit="projform.$valid && proceedLogin()" -->
+<!-- 								novalidate="novalidate" ng-if="projects.length!=0"> -->
+								<!-- <div class="input-group"> 
+					<span class="input-group-addon"><i class="fa fa-cubes" style="color: #03a9f4;"></i></span> -->
+<!-- 										 <select class="form-control" -->
+<!-- 										type="text" name="project" ng-model="pro.project" -->
+<!-- 										placeholder="Choose a Project" required="true" -->
+<!-- 										ng-options="pr as pr.projectName for pr in projects"> -->
+<!-- 										<option value="">---Select One Project---</option> -->
+<!-- 									</select> -->
+<!-- 								</div> -->
+<!-- 								<span class="error-msg" -->
+<!-- 									ng-show="projform.$submitted && projform.project.$error.required">Project -->
+<!-- 									is required!</span> -->
+<!-- 								<div class="row"> -->
+<!-- 									<div class="col-xs-12"> -->
+<!-- 										<input type="submit" class="btn btn-success col-xs-12" -->
+<!-- 											value="Proceed"> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+							<!-- </form> -->
+
+							<form role="form" name="logform"
+								ng-submit="logform.$valid && doLogin()" novalidate="novalidate"
+								ng-if="projects.length==0">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user"
+										style="color: #03a9f4;"></i></span> <input class="form-control"
+										type="text" name="emailAddress" ng-model="user.emailAddress"
+										placeholder="Email address" required="true" ng-required="true">
+								</div>
+								<span class="error-msg"
+									ng-show="logform.$submitted && logform.emailAddress.$error.required">Username
+									is required!</span>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-key"
+										style="color: #03a9f4;"></i></span> <input type="password"
+										class="form-control" ng-required="true" ng-minlength="4"
+										ng-model="user.password" name="pass" required="true"
+										placeholder="Password">
+								</div>
+								<span class="error-msg"
+									ng-show="logform.$submitted && logform.pass.$error.required">Password
+									is required!</span> <span class="error-msg"
+									ng-show="logform.pass.$error.minlength">Password should
+									be minimum of 4 characters long!</span>
+								<div id="remember-me-wrapper">
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="checkbox-nice">
+												<input type="checkbox" id="remember-me" checked="checked">
+												<label for="remember-me"> Remember me </label>
+											</div>
+										</div>
+										<a href="forgot-password-full.html" id="login-forget-link"
+											class="col-xs-6"> Forgot password? </a>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<input type="submit" class="btn btn-success col-xs-12"
+											value="Login">
+									</div>
+								</div>
+								
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="login-box-footer">
+			<div class="row">
+				<div class="col-xs-12">
+					Do not have an account? <a href="#/Registration">
+						Register now </a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

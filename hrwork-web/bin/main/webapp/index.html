@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<title>HR Work</title>
+
+<!-- bootstrap -->
+<link rel="stylesheet" type="text/css"
+	href="lib/theme/css/bootstrap/bootstrap.min.css" />
+
+<!-- RTL support - for demo only -->
+<!-- <script src="js/demo-rtl.js"></script> -->
+<!-- 
+	If you need RTL support just include here RTL CSS file <link rel="stylesheet" type="text/css" href="lib/theme/css/libs/bootstrap-rtl.min.css" />
+	And add "rtl" class to <body> element - e.g. <body class="rtl"> 
+	-->
+<!-- app.css -->
+<link rel="stylesheet" type="text/css" href="lib/app/css/app.css" />
+
+<!-- libraries -->
+<link rel="stylesheet" type="text/css"
+	href="lib/theme/css/libs/font-awesome.css" />
+<link rel="stylesheet" type="text/css"
+	href="lib/theme/css/libs/nanoscroller.css" />
+<link rel="stylesheet" href="lib/theme/css/libs/nifty-component.css"
+	type="text/css" />
+
+<!-- global styles -->
+<link rel="stylesheet" type="text/css"
+	href="lib/theme/css/compiled/theme_styles.css" />
+
+<!-- this page specific styles -->
+<link rel="stylesheet" href="lib/theme/css/libs/daterangepicker.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="lib/theme/css/libs/jquery-jvectormap-1.2.2.css" type="text/css" />
+<link rel="stylesheet" href="lib/theme/css/libs/weather-icons.css"
+	type="text/css" />
+
+
+<!-- Favicon -->
+<link type="image/x-icon" href="lib/theme/lib/theme/img/favicon.png"
+	rel="shortcut icon" />
+
+<!-- google font libraries -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300'
+	rel='stylesheet' type='text/css'>
+
+<!-- Notifications -->
+<link rel="stylesheet" type="text/css"
+	href="lib/theme/css/libs/ns-default.css" />
+<link rel="stylesheet" type="text/css"
+	href="lib/theme/css/libs/ns-style-growl.css" />
+<link rel="stylesheet" type="text/css"
+	href="lib/theme/css/libs/ns-style-bar.css" />
+<link rel="stylesheet" type="text/css"
+	href="lib/theme/css/libs/ns-style-attached.css" />
+<link rel="stylesheet" type="text/css"
+	href="lib/theme/css/libs/ns-style-other.css" />
+<link rel="stylesheet" type="text/css"
+	href="lib/theme/css/libs/ns-style-theme.css" />
+
+
+<!--[if lt IE 9]>
+		<script src="lib/theme/js/html5shiv.js"></script>
+		<script src="lib/theme/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body class="theme-whbl fixed-footer">
+	<div id="login-full-wrapper" ng-if="!active">
+		<div class="container">
+			<div ng-view></div>
+		</div>
+	</div>
+	<div id="theme-wrapper" ng-if="active" style="display: none;">
+		<div ng-include="'app/views/partials/header.html'"></div>
+		<div id="page-wrapper" class="container">
+			<div class="row">
+				<div ng-include="'app/views/partials/sidebar.html'"></div>
+				<div id="content-wrapper">
+					<div class="row">
+						<div ng-view></div>
+					</div>
+					<div ng-include="'app/views/partials/footer.html'"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script data-main="app/main" src="lib/require/require.js"></script>
+</body>
+</html>

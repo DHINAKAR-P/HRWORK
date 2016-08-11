@@ -1,0 +1,146 @@
+<header class="navbar" id="header-navbar"
+	ng-controller="NavbarController as navbar">
+	<div class="container">
+		<a href="index.html" id="logo" class="navbar-brand"> <img
+			src="lib/theme/img/logo.png" alt="" class="normal-logo logo-white">
+			<img src="lib/theme/img/logo-black.png" alt=""
+			class="normal-logo logo-black"> <img
+			src="lib/theme/img/logo-small.png" alt=""
+			class="small-logo hidden-xs hidden-sm hidden">
+		</a>
+
+		<div class="clearfix">
+			<button class="navbar-toggle" data-target=".navbar-ex1-collapse"
+				data-toggle="collapse" type="button">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="fa fa-bars"></span>
+			</button>
+
+			<div
+				class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
+				<ul class="nav navbar-nav pull-left">
+					<li><a class="btn" id="make-small-nav"> <i
+							class="fa fa-bars"></i>
+					</a></li>
+				</ul>
+			</div>
+
+			<div class="nav-no-collapse pull-right" id="header-nav">
+				<ul class="nav navbar-nav pull-right">
+					<li class="active open"><a
+						style="background-color: #78D3F4 !important;" href="#/project">{{projectName}}</a></li>
+					<!-- orange:  #FAAF4C 
+					<li class="mobile-search"><a class="btn"> <i
+							class="fa fa-search"></i>
+					</a>
+
+						<div class="drowdown-search">
+							<form role="search">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Search...">
+									<i class="fa fa-search nav-search-icon"></i>
+								</div>
+							</form>
+						</div></li> -->
+					<li class="dropdown profile-dropdown"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown"> <img
+							src="lib/app/img/user.jpg" alt=""> <span class="hidden-xs"><span>{{userName}}</span></span>
+							<b class="caret"></b>
+					</a>
+						<ul class="dropdown-menu dropdown-menu-right">
+							<li><a href="#/editProfile"><i class="fa fa-user"></i>Profile</a></li>
+							<li><a data-toggle="modal" href="#resetpassword"><i
+									class="fa fa-key"></i>Reset password</a></li>
+							<!-- 	<li><a href="#/error404"><i class="fa fa-cog"></i>Settings</a></li>
+							<li><a href="#/error404"><i class="fa fa-envelope-o"></i>Messages</a></li>
+							<li><a href="" ng-click="logout()"><i
+									class="fa fa-power-off"></i>Logout</a></li> -->
+						</ul></li>
+					<li class="hidden-xxs"><a class="btn" ng-click="logout()">
+							<i class="fa fa-power-off"></i>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+<!-- ######################## -->
+<!-- RESET PASSWORD MODEL  -->
+<!-- START -->
+<div style="display: none;" class="modal fade" id="resetpassword"
+	tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">x</button>
+				<h4 class="modal-title">
+					<B>Reset Password</B>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div ng-controller="ResetPasswordController as resetPassword">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<div id="login-box" style="margin: 0px auto 20px;">
+									<div id="login-box-holder">
+										<div class="row">
+											<div class="col-xs-12">
+												<div style="border: medium none;" class="with-heading"
+													id="login-box-inner">
+													<form role="form" ng-submit="checkPassword(pass)">
+														<div class="form-group">
+															<div class="alert alert-success fade in"
+																ng-show="message!=''">
+																<i class="fa fa-check-circle fa-fw fa-lg"></i>
+																{{message}}
+															</div>
+															<div class="alert alert-danger fade in"
+																ng-show="error!=''">
+																<i class="fa fa-times-circle fa-fw fa-lg"></i> {{error}}
+															</div>
+														</div>
+														<div class="input-group">
+															<span class="input-group-addon"><i
+																class="fa fa-lock"></i></span> <input class="form-control"
+																type="password" required placeholder="Old password"
+																ng-model="pass.oldpassword">
+														</div>
+														<div class="input-group">
+															<span class="input-group-addon"><i
+																class="fa fa-lock"></i></span> <input class="form-control"
+																type="password" required placeholder="New password"
+																ng-model="pass.newPassword">
+														</div>
+														<div class="input-group">
+															<span class="input-group-addon"><i
+																class="fa fa-lock"></i></span> <input class="form-control"
+																type="password" required placeholder="Confirm password"
+																ng-model="pass.retypePassword">
+														</div>
+														<div class="row">
+															<div class="col-xs-12">
+																<button data-ng-hide="isAjax"
+																	class="btn btn-success col-xs-12" type="submit">Reset
+																	password</button>
+																<img alt="processing" data-ng-show="isAjax"
+																	src="lib/theme/img/loading.gif">
+															</div>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- MODEL END -->
+	<!-- ######################## -->
